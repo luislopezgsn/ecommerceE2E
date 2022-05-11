@@ -26,6 +26,7 @@ export const addPerfume = (data: FormData) => async (dispatch: Dispatch) => {
         await RequestService.post("/admin/add", data, true, "multipart/form-data")
         dispatch(addPerfumeSuccess());
     } catch (error) {
+		// @ts-ignore
         dispatch(addPerfumeFailure(error.response.data));
     }
 };
@@ -36,6 +37,7 @@ export const updatePerfume = (data: FormData) => async (dispatch: Dispatch) => {
         dispatch(updatePerfumeSuccess());
         dispatch(fetchPerfumeSuccess(response.data));
     } catch (error) {
+		// @ts-ignore
         dispatch(updatePerfumeFailure(error.response.data));
     }
 };

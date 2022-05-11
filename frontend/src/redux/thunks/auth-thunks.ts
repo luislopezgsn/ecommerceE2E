@@ -29,6 +29,7 @@ export const login = (userData: UserData, history: any) => async (dispatch: Disp
         dispatch(loginSuccess(response.data.userRole));
         history.push("/account");
     } catch (error) {
+	// @ts-ignore
         dispatch(loginFailure(error.response.data));
     }
 };
@@ -39,6 +40,7 @@ export const registration = (userRegistrationData: UserRegistration) => async (d
         await RequestService.post("/registration", userRegistrationData);
         dispatch(registerSuccess());
     } catch (error) {
+	// @ts-ignore
         dispatch(registerFailure(error.response.data));
     }
 };
@@ -56,6 +58,7 @@ export const activateAccount = (code: string) => async (dispatch: Dispatch) => {
         const response = await RequestService.get("/registration/activate/" + code);
         dispatch(activateAccountSuccess(response.data));
     } catch (error) {
+	// @ts-ignore
         dispatch(activateAccountFailure(error.response.data));
     }
 };
@@ -66,6 +69,7 @@ export const forgotPassword = (email: { email: string }) => async (dispatch: Dis
         const response = await RequestService.post("/auth/forgot", email);
         dispatch(forgotPasswordSuccess(response.data));
     } catch (error) {
+	// @ts-ignore
         dispatch(forgotPasswordFailure(error.response.data));
     }
 };
@@ -75,6 +79,7 @@ export const fetchResetPasswordCode = (code: string) => async (dispatch: Dispatc
         const response = await RequestService.get("/auth/reset/" + code);
         dispatch(resetPasswordCodeSuccess(response.data));
     } catch (error) {
+	// @ts-ignore
         dispatch(resetPasswordCodeFailure(error.response.data));
     }
 };
@@ -85,6 +90,7 @@ export const resetPassword = (data: UserResetPasswordData, history: any) => asyn
         dispatch(resetPasswordSuccess(response.data));
         history.push("/login");
     } catch (error) {
+	// @ts-ignore
         dispatch(resetPasswordFailure(error.response.data));
     }
 };

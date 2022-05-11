@@ -13,7 +13,7 @@ services:
     networks:
       - arquitectura
 
-  app:
+  back:
     build: .
     depends_on:
       - postgres_app
@@ -21,6 +21,24 @@ services:
       - '8080:8080'
     environment:
        SPRING_PROFILES_ACTIVE: docker
+    networks:
+      - arquitectura  
+      
+  front:
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres_app
+      - back
+    volumes:
+      - './frontend:/app'
+      - '/app/node_modules'
+    ports:
+      - '3000:3000'
+    stdin_open: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
     networks:
       - arquitectura
 

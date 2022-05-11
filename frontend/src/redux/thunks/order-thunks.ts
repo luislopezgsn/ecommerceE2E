@@ -23,6 +23,7 @@ export const addOrder = (order: any, history: any) => async (dispatch: Dispatch)
         localStorage.removeItem("perfumes");
         dispatch(orderAddedSuccess(response.data));
     } catch (error) {
+	// @ts-ignore
         dispatch(orderAddedFailure(error.response?.data));
     }
 };
