@@ -43,6 +43,21 @@ services:
       - CHOKIDAR_USEPOLLING=true
     networks:
       - arquitectura
+    
+  bucket:
+    build:
+      context: ./min.io
+      dockerfile: Dockerfile
+    volumes:
+      - './min.io/data:/data'
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    environment:
+      - MINIO_ROOT_USER=admin
+      - MINIO_ROOT_PASSWORD=S1ngu1ar
+    networks:
+      - arquitectura
 
 networks:
   arquitectura:
