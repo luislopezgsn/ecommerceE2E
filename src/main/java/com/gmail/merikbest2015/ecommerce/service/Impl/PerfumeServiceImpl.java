@@ -130,7 +130,7 @@ public class PerfumeServiceImpl implements PerfumeService {
         if (multipartFile == null) {
             perfume.setFilename(amazonS3client.getUrl(bucketName, "empty.jpg").toString());
         } else {
-            File file = new File(multipartFile.getOriginalFilename());
+            File file = new File(Objects.requireNonNull(multipartFile.getOriginalFilename()));
             try (FileOutputStream fos = new FileOutputStream(file)) {
                 fos.write(multipartFile.getBytes());
             } catch (IOException e) {
@@ -138,7 +138,7 @@ public class PerfumeServiceImpl implements PerfumeService {
             }
             String fileName = UUID.randomUUID().toString() + "." + multipartFile.getOriginalFilename();
             amazonS3client.putObject(new PutObjectRequest(bucketName, fileName, file));
-            perfume.setFilename(amazonS3client.getUrl(bucketName, fileName).toString());
+            perfume.setFilename(fileName);
             file.delete();
         }
         return perfumeRepository.save(perfume);

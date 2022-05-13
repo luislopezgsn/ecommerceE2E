@@ -8,7 +8,7 @@ E-commerce project developed using Spring Boot and React.js.
 * Front-end: TypeScript, React.js, Redux, Jest, Bootstrap, CSS
 * Security: JWT, OAuth2 Google, Facebook, Github
 * REST API, GraphQL API
-* AWS: EC2, S3, PostgreSQL RDS
+* AWS: EC2, S3, Min.io, PostgreSQL RDS
 * Server Build: Maven
 * Client Build: npm, yarn, webpack
 
@@ -45,7 +45,11 @@ npm install
 yarn start
 ```
 
-Navigate to <http://localhost:3000> to see the webpage
+Navigate to the <http://localhost:3000> to see the webpage
+
+
+> NOTE: Admin user for the webpage  
+> admin@gmail.com / admin
 
 ## Swagger Documentation
 
@@ -53,22 +57,22 @@ Navigate to <http://localhost:3000> to see the webpage
 
 ## Screenshots
 
-Menu page  |  Product page
-:------------------------:|:-------------------------:
-![Menu page](https://i.ibb.co/dcp56tb/menu.jpg)  |  ![Product page](https://i.ibb.co/1dBjdMy/product.jpg)
+|                    Menu page                     |                     Product page                      |
+|:------------------------------------------------:|:-----------------------------------------------------:|
+| ![Menu page](https://i.ibb.co/dcp56tb/menu.jpg)  | ![Product page](https://i.ibb.co/1dBjdMy/product.jpg) |
 
-Email template  |  List of users
-:------------------------:|:-------------------------:
-![Email template](https://i.ibb.co/bmKTLPJ/email-template.jpg)  |  ![List of users](https://i.ibb.co/T88cFZt/all-users.jpg)
+|                         Email template                         |                      List of users                       |
+|:--------------------------------------------------------------:|:--------------------------------------------------------:|
+| ![Email template](https://i.ibb.co/bmKTLPJ/email-template.jpg) | ![List of users](https://i.ibb.co/T88cFZt/all-users.jpg) | 
 
-List of orders  |  User order page
-:------------------------:|:-------------------------:
-![List of orders](https://i.ibb.co/T88cFZt/all-users.jpg)  |  ![User order page](https://i.ibb.co/4f7F0hk/all-orders.jpg)
+|                      List of orders                       |                       User order page                       |
+|:---------------------------------------------------------:|:-----------------------------------------------------------:|
+| ![List of orders](https://i.ibb.co/T88cFZt/all-users.jpg) | ![User order page](https://i.ibb.co/4f7F0hk/all-orders.jpg) |
 
-User profile page  |  Add perfume page
-:------------------------:|:-------------------------:
-![User profile page](https://i.ibb.co/KDF3FZX/user-page.jpg)  |  ![Add perfume page](https://i.ibb.co/KGKhJxR/add-perfume.jpg)
+|                      User profile page                       |                       Add perfume page                        |
+|:------------------------------------------------------------:|:-------------------------------------------------------------:|
+| ![User profile page](https://i.ibb.co/KDF3FZX/user-page.jpg) | ![Add perfume page](https://i.ibb.co/KGKhJxR/add-perfume.jpg) |
 
-Edit perfume list  |  Edit perfume page
-:------------------------:|:-------------------------:
-![Edit perfume list](https://i.ibb.co/fkFSnFy/edit.jpg)  |  ![Edit perfume page](https://i.ibb.co/cTddspr/edit-perfume.jpg)
+|                    Edit perfume list                    |                        Edit perfume page                        |
+|:-------------------------------------------------------:|:---------------------------------------------------------------:|
+| ![Edit perfume list](https://i.ibb.co/fkFSnFy/edit.jpg) | ![Edit perfume page](https://i.ibb.co/cTddspr/edit-perfume.jpg) |
