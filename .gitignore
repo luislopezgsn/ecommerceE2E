@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Frontend ###
+frontend/package-lock.json
+
+### Min.io ###
+min.io/data/.minio.sys/

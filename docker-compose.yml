@@ -3,8 +3,8 @@ version: "3.8"
 services:
   postgres_app:
     build: 
-      context: .
-      dockerfile: Dockerfile_postgre
+      context: ./postgres
+      dockerfile: Dockerfile
     restart: always
     environment:
       POSTGRES_PASSWORD: root
@@ -62,3 +62,7 @@ services:
 networks:
   arquitectura:
     driver: bridge
+
+volumes:
+  min.io:
+  frontend:
