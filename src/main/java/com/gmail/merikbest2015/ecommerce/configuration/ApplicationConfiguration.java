@@ -3,6 +3,7 @@ package com.gmail.merikbest2015.ecommerce.configuration;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
@@ -23,6 +24,9 @@ public class ApplicationConfiguration {
     @Value("${amazon.aws.secret-key}")
     private String awsAccessSecret;
 
+    @Value("${s3.url}")
+    private String s3Url;
+
     @Bean
     public PasswordEncoder getPasswordEncoder() {
         return new BCryptPasswordEncoder(8);
@@ -31,10 +35,19 @@ public class ApplicationConfiguration {
     @Bean
     public AmazonS3 s3Client() {
         AWSCredentials credentials = new BasicAWSCredentials(awsAccessKey, awsAccessSecret);
-        return AmazonS3ClientBuilder.standard()
+
+        if (s3Url != null){
+            return AmazonS3ClientBuilder.standard()
+                .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration(s3Url, Regions.US_EAST_1.name()))
+                .withPathStyleAccessEnabled(true)
+                .withCredentials(new AWSStaticCredentialsProvider(credentials))
+                .build();
+        } else {
+            return AmazonS3ClientBuilder.standard()
                 .withCredentials(new AWSStaticCredentialsProvider(credentials))
                 .withRegion(Regions.EU_CENTRAL_1)
                 .build();
+        }
     }
 
     @Bean
