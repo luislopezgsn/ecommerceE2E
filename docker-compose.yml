@@ -59,6 +59,19 @@ services:
     networks:
       - arquitectura
 
+  smtp4dev:
+    image: rnwood/smtp4dev:v3.1
+    restart: always
+    volumes:
+      - smtp4dev-data:/smtp4dev
+    ports:
+      - '8081:80'
+      - '25:25'
+      - '143:143'
+    environment:
+      #Specifies the server hostname. Used in auto-generated TLS certificate if enabled.
+      - ServerOptions__HostName=smtp4dev
+
 networks:
   arquitectura:
     driver: bridge
@@ -66,3 +79,4 @@ networks:
 volumes:
   min.io:
   frontend:
+  smtp4dev-data:
