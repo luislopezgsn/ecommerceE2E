@@ -71,6 +71,8 @@ services:
     environment:
       #Specifies the server hostname. Used in auto-generated TLS certificate if enabled.
       - ServerOptions__HostName=smtp4dev
+    networks:
+      - arquitectura
 
 networks:
   arquitectura:

@@ -88,7 +88,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         String template = "registration-template";
         Map<String, Object> attributes = new HashMap<>();
         attributes.put("firstName", user.getFirstName());
-        attributes.put("registrationUrl", "http://" + hostname + "/activate/" + user.getActivationCode());
+        attributes.put("registrationUrl", "http://localhost:3000/activate/" + user.getActivationCode());
         mailSender.sendMessageHtml(user.getEmail(), subject, template, attributes);
         return "User successfully registered.";
     }
@@ -130,7 +130,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         String template = "password-reset-template";
         Map<String, Object> attributes = new HashMap<>();
         attributes.put("firstName", user.getFirstName());
-        attributes.put("resetUrl", "http://" + hostname + "/reset/" + user.getPasswordResetCode());
+        attributes.put("resetUrl", "http://localhost:3000/reset/" + user.getPasswordResetCode());
         mailSender.sendMessageHtml(user.getEmail(), subject, template, attributes);
         return "Reset password code is send to your E-mail";
     }
