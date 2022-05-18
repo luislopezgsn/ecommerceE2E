@@ -24,10 +24,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -75,10 +72,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         if (user.getPassword() != null && !user.getPassword().equals(password2)) {
             throw new PasswordException("Passwords do not match.");
         }
-        User userFromDb = userRepository.findByEmail(user.getEmail())
-                .orElseThrow(() -> new EmailException("Email is already used."));
+        Optional<User> userFromDb = userRepository.findByEmail(user.getEmail());
 
-        if (userFromDb != null) {
+        if (userFromDb.isPresent()) {
             throw new EmailException("Email is already used.");
         }
         user.setActive(false);
