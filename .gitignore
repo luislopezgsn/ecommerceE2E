@@ -36,3 +36,9 @@ build/
 frontend/package-lock.json
 
 ### Min.io ###
+min.io/data/**/*.bin
+min.io/data/**/*.usage.json
+min.io/data/**/fs.json
+min.io/data/**/identity.json
+min.io/data/**/format.json
+
