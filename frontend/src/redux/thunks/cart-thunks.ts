@@ -12,7 +12,7 @@ import RequestService from '../../utils/request-service';
 export const fetchCart = (data: Array<number>) => async (dispatch: Dispatch) => {
     dispatch(loadingCart());
     const response = await RequestService.post("/users/cart", data);
-    const perfumes: Map<number, number> = new Map(JSON.parse(<string>localStorage.getItem("perfumes")));
+    const perfumes: Map<number, number> = new Map(JSON.parse(String(localStorage.getItem("perfumes"))));
     let total: number = 0;
 
     perfumes.forEach((value: number, key: number) => {
@@ -24,7 +24,7 @@ export const fetchCart = (data: Array<number>) => async (dispatch: Dispatch) => 
 };
 
 export const calculateCartPrice = (perfumes: Array<Perfume> | any) => (dispatch: Dispatch) => {
-    const perfumesFromLocalStorage: Map<number, number> = new Map(JSON.parse(<string>localStorage.getItem("perfumes")));
+    const perfumesFromLocalStorage: Map<number, number> = new Map(JSON.parse(String(localStorage.getItem("perfumes"))));
     let total: number = 0;
 
     perfumesFromLocalStorage.forEach((value: number, key: number) => {

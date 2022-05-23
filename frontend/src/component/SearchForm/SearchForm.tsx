@@ -12,7 +12,7 @@ type PropsType = {
 
 const SearchForm: FC<PropsType> = ({data, searchByData, setFilteredData, setSearching}) => {
     const [search, setSearch] = useState<string>("");
-    const [searchFor, setSearchFor] = useState<string>("");
+    const [, setSearchFor] = useState<string>("");
     const [searchBy, setSearchBy] = useState<string>(searchByData && searchByData.length > 0 ? searchByData[0].value : "");
 
     const submitHandler = (event: FormEvent<HTMLFormElement>): void => {

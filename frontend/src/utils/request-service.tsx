@@ -1,4 +1,3 @@
-import React from 'react';
 import axios, {Method} from 'axios';
 
 import {API_BASE_URL} from "./constants/url";

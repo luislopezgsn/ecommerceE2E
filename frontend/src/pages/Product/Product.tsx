@@ -95,7 +95,7 @@ const Product: FC<RouteComponentProps<{ id: string }>> = ({match}) => {
                 <div className="row">
                     <div className="col-md-5">
                         <div>
-                            <img src={perfume.filename} className="rounded mx-auto w-100"/>
+                            <img src={perfume.filename} className="rounded mx-auto w-100" alt="perfume name"/>
                         </div>
                     </div>
                     <div className="col-md-7">

@@ -87,7 +87,7 @@ const Cart: FC = () => {
                                     <div key={perfume.id} className="card mb-3 mx-auto" style={{maxWidth: "940px"}}>
                                         <div className="row no-gutters">
                                             <div className="col-2 mx-3 my-3">
-                                                <img src={perfume.filename} className="img-fluid"/>
+                                                <img src={perfume.filename} className="img-fluid" alt="perfume name"/>
                                             </div>
                                             <div className="col-6">
                                                 <div className="card-body">

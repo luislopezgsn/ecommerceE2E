@@ -173,7 +173,8 @@ const Order: FC = () => {
                                         <div key={perfume.id} className="col-lg-6 d-flex align-items-stretch">
                                             <div className="card mb-5">
                                                 <img src={perfume.filename}
-                                                     className="rounded mx-auto w-50"/>
+                                                     className="rounded mx-auto w-50"
+                                                     alt="perfume name"/>
                                                 <div className="card-body text-center">
                                                     <h5>{perfume.perfumeTitle}</h5>
                                                     <h6>{perfume.perfumer}</h6>

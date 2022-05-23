@@ -49,7 +49,7 @@ const Menu: FC = () => {
     };
 
     const handlePrice = (value: number): Array<number> => {
-        let find = price.find((item) => item.id == value);
+        let find = price.find((item) => item.id === value);
         return find!.array;
     };
 

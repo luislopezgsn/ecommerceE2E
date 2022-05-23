@@ -259,7 +259,7 @@ const EditPerfume: FC<RouteComponentProps<{ id: string }>> = ({match}) => {
                             </div>
                         </div>
                         <div className="col-md-6">
-                            <img src={filename} className="rounded mx-auto w-100 mb-2"/>
+                            <img src={filename} className="rounded mx-auto w-100 mb-2" alt="filename"/>
                             <input type="file" name="file" onChange={handleFileChange}/>
                         </div>
                     </div>
