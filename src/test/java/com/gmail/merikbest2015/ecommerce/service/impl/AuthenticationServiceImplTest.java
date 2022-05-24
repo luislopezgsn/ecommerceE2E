@@ -1,4 +1,4 @@
-package com.gmail.merikbest2015.ecommerce.service.Impl;
+package com.gmail.merikbest2015.ecommerce.service.impl;
 
 import com.gmail.merikbest2015.ecommerce.domain.AuthProvider;
 import com.gmail.merikbest2015.ecommerce.domain.Role;
@@ -100,11 +100,7 @@ public class AuthenticationServiceImplTest {
         assertTrue(CoreMatchers.is(user.getRoles()).matches(Collections.singleton(Role.USER)));
         verify(userRepository, times(1)).save(user);
         verify(mailSender, times(1))
-                .sendMessageHtml(
-                        ArgumentMatchers.eq(user.getEmail()),
-                        ArgumentMatchers.eq("Activation code"),
-                        ArgumentMatchers.eq("registration-template"),
-                        ArgumentMatchers.eq(attributes));
+                .sendMessageHtml(user.getEmail(), "Activation code", "registration-template", attributes);
     }
 
     @Test
@@ -232,11 +228,7 @@ public class AuthenticationServiceImplTest {
         verify(userRepository, times(1)).save(user);
         verify(userRepository, times(1)).findByEmail(user.getEmail());
         verify(mailSender, times(1))
-                .sendMessageHtml(
-                        ArgumentMatchers.eq(user.getEmail()),
-                        ArgumentMatchers.eq("Password reset"),
-                        ArgumentMatchers.eq("password-reset-template"),
-                        ArgumentMatchers.eq(attributes));
+                .sendMessageHtml(user.getEmail(), "Password reset", "password-reset-template", attributes);
     }
 
     @Test

@@ -14,6 +14,7 @@ public class ControllerAspect {
 
     @Pointcut(value = "execution(* com.gmail.merikbest2015.ecommerce.controller.*.*(..))")
     public void executeLogging() {
+        // this method is empty
     }
 
     @Around("executeLogging()")

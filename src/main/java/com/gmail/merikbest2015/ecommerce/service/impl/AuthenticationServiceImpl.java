@@ -1,4 +1,4 @@
-package com.gmail.merikbest2015.ecommerce.service.Impl;
+package com.gmail.merikbest2015.ecommerce.service.impl;
 
 import com.gmail.merikbest2015.ecommerce.domain.AuthProvider;
 import com.gmail.merikbest2015.ecommerce.domain.Role;
@@ -37,6 +37,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
 
+    private static final String EMAIL_NOT_FOUND_MESSAGE = "Email not found.";
+
     @Value("${hostname}")
     private String hostname;
 
@@ -51,7 +53,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
             User user = userRepository.findByEmail(email)
-                    .orElseThrow(() -> new ApiRequestException("Email not found.", HttpStatus.NOT_FOUND));
+                    .orElseThrow(() -> new ApiRequestException(EMAIL_NOT_FOUND_MESSAGE, HttpStatus.NOT_FOUND));
             String userRole = user.getRoles().iterator().next().name();
             String token = jwtProvider.createToken(email, userRole);
             Map<String, String> response = new HashMap<>();
@@ -122,7 +124,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Override
     public String sendPasswordResetCode(String email) {
         User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new ApiRequestException("Email not found.", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException(EMAIL_NOT_FOUND_MESSAGE, HttpStatus.NOT_FOUND));
         user.setPasswordResetCode(UUID.randomUUID().toString());
         userRepository.save(user);
 
@@ -144,7 +146,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             throw new PasswordException("Passwords do not match.");
         }
         User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new ApiRequestException("Email not found.", HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ApiRequestException(EMAIL_NOT_FOUND_MESSAGE, HttpStatus.NOT_FOUND));
         user.setPassword(passwordEncoder.encode(password));
         user.setPasswordResetCode(null);
         userRepository.save(user);

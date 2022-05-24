@@ -11,7 +11,7 @@ class EcommerceApplicationTests {
     }
 
     @Test
-    public void main() {
+    void main() {
         EcommerceApplication.main(new String[] {});
     }
 }
