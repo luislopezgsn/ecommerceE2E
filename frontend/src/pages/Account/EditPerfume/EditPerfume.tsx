@@ -51,7 +51,7 @@ const EditPerfume: FC<RouteComponentProps<{ id: string }>> = ({match}) => {
 
     useEffect(() => {
         dispatch(fetchPerfume(match.params.id));
-    }, []);
+    }, [dispatch, match.params.id]);
 
     useEffect(() => {
         setPerfume(perfumeData);
@@ -64,7 +64,7 @@ const EditPerfume: FC<RouteComponentProps<{ id: string }>> = ({match}) => {
             window.scrollTo(0, 0);
             dispatch(fetchPerfumes());
         }
-    }, [perfumeData]);
+    }, [perfumeData, dispatch, isPerfumeEdited]);
 
     const onFormSubmit = (event: FormEvent<HTMLFormElement>): void => {
         event.preventDefault();

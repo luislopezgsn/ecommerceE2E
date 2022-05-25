@@ -47,7 +47,7 @@ const Product: FC<RouteComponentProps<{ id: string }>> = ({match}) => {
             });
         });
         return () => stompClient?.disconnect();
-    }, []);
+    }, [dispatch, match.params.id]);
 
     useEffect(() => {
         setAuthor("");

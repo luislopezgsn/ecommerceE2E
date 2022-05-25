@@ -33,7 +33,7 @@ const Cart: FC = () => {
         } else {
             dispatch(loadCart());
         }
-    }, []);
+    }, [dispatch, perfumeInCart]);
 
     const deleteFromCart = (perfumeId: number): void => {
         perfumeInCart.delete(perfumeId);

@@ -42,7 +42,7 @@ const Menu: FC = () => {
             dispatch(fetchPerfumesByPerfumer({perfumer: perfumeData}));
             window.scrollTo(0, 0);
         }
-    }, []);
+    }, [dispatch, state.id]);
 
     const getProducts = (variables: FilterParamsType): void => {
         dispatch(fetchPerfumesByFilterParams(variables));

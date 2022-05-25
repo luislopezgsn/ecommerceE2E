@@ -26,7 +26,7 @@ const Login: FC<RouteComponentProps<{ code: string }>> = ({match}) => {
         if (match.params.code) {
             dispatch(activateAccount(match.params.code));
         }
-    }, []);
+    }, [dispatch, match.params.code]);
 
     const onClickSignIn = (event: FormEvent<HTMLFormElement>): void => {
         event.preventDefault();

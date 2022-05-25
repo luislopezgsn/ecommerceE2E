@@ -24,7 +24,7 @@ const Registration: FC = () => {
 
     useEffect(() => {
         dispatch(formReset());
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         setEmail("");

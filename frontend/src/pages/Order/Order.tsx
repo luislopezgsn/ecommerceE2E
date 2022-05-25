@@ -41,7 +41,7 @@ const Order: FC = () => {
 
     useEffect(() => {
         dispatch(fetchOrder());
-    }, []);
+    }, [dispatch]);
 
     const onFormSubmit = (event: FormEvent<HTMLFormElement>): void => {
         event.preventDefault();

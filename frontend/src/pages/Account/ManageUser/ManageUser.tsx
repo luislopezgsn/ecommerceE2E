@@ -18,11 +18,11 @@ const ManageUser: FC<RouteComponentProps<{ id: string }>> = ({match}) => {
 
     useEffect(() => {
         dispatch(fetchUserInfo(match.params.id));
-    }, []);
+    }, [dispatch, match.params.id]);
 
     useEffect(() => {
         dispatch(fetchUserOrders(email));
-    }, [userData]);
+    }, [userData, dispatch, email]);
 
     return (
         <>
