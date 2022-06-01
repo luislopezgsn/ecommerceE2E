@@ -58,6 +58,23 @@ services:
       - MINIO_ROOT_PASSWORD=S1ngu1ar
     networks:
       - arquitectura
+  
+  #https://stackoverflow.com/a/66485256
+  modifybuckets:
+    image: minio/mc
+    volumes:
+      - './scripts:/scripts'
+    depends_on:
+      - bucket
+    entrypoint: >
+      /bin/sh -c "
+      /scripts/wait-for-it.sh bucket:9000;
+      /usr/bin/mc alias set myminio http://bucket:9000 admin S1ngu1ar;
+      /usr/bin/mc policy set public myminio/perfume-images;
+      exit 0;
+      "
+    networks:
+      - arquitectura
 
   smtp4dev:
     image: rnwood/smtp4dev:v3.1
@@ -82,3 +99,4 @@ volumes:
   min.io:
   frontend:
   smtp4dev-data:
+  scripts:
