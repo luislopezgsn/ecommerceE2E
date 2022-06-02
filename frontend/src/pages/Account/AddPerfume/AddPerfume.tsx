@@ -88,7 +88,7 @@ const AddPerfume: FC = () => {
             window.scrollTo(0, 0);
             dispatch(fetchPerfumes());
         }
-    }, [isPerfumeAdded]);
+    }, [isPerfumeAdded, dispatch, initialState]);
 
     const onFormSubmit = (event: FormEvent<HTMLFormElement>): void => {
         event.preventDefault();

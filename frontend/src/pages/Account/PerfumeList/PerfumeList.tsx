@@ -14,7 +14,7 @@ const PerfumeList: FC = () => {
 
     useEffect(() => {
         dispatch(fetchPerfumes());
-    }, []);
+    }, [dispatch]);
 
     const itemsPerPage = 24;
     const searchByData = [

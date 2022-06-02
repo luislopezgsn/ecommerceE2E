@@ -18,7 +18,7 @@ const ChangePassword: FC = () => {
 
     useEffect(() => {
         dispatch(resetForm());
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         setPassword("");
