@@ -18,7 +18,7 @@ const EditPersonalData: FC = () => {
 
     useEffect(() => {
         dispatch(resetForm());
-    }, []);
+    }, [dispatch]);
 
     const onFormSubmit = (event: FormEvent<HTMLFormElement>): void => {
         event.preventDefault();

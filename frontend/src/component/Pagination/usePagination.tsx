@@ -31,7 +31,7 @@ const usePagination: ({itemsPerPage, data, startFrom}: { itemsPerPage: number, d
             setCurrentPage(1);
             setSearching(false);
         }
-    }, [filteredData, currentPage]);
+    }, [filteredData, currentPage, perPage, searching]);
 
     let ellipsisLeft: boolean = false;
     let ellipsisRight: boolean = false;

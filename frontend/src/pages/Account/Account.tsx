@@ -25,7 +25,7 @@ const Account: FC = () => {
     useEffect(() => {
         dispatch(formReset());
         dispatch(fetchUserInfo());
-    }, []);
+    }, [dispatch]);
 
     return (
         <div className="account-container container">

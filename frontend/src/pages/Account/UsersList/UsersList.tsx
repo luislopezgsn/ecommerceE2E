@@ -16,7 +16,7 @@ const UsersList: FC = () => {
 
     useEffect(() => {
         dispatch(fetchAllUsers());
-    }, []);
+    }, [dispatch]);
 
     return (
         <div className="container">

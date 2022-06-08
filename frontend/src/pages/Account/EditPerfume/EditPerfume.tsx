@@ -51,7 +51,7 @@ const EditPerfume: FC<RouteComponentProps<{ id: string }>> = ({match}) => {
 
     useEffect(() => {
         dispatch(fetchPerfume(match.params.id));
-    }, []);
+    }, [dispatch, match.params.id]);
 
     useEffect(() => {
         setPerfume(perfumeData);
@@ -64,7 +64,7 @@ const EditPerfume: FC<RouteComponentProps<{ id: string }>> = ({match}) => {
             window.scrollTo(0, 0);
             dispatch(fetchPerfumes());
         }
-    }, [perfumeData]);
+    }, [perfumeData, dispatch, isPerfumeEdited]);
 
     const onFormSubmit = (event: FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
@@ -259,7 +259,7 @@ const EditPerfume: FC<RouteComponentProps<{ id: string }>> = ({match}) => {
                             </div>
                         </div>
                         <div className="col-md-6">
-                            <img src={filename} className="rounded mx-auto w-100 mb-2"/>
+                            <img src={filename} className="rounded mx-auto w-100 mb-2" alt="filename"/>
                             <input type="file" name="file" onChange={handleFileChange}/>
                         </div>
                     </div>

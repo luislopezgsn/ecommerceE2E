@@ -14,7 +14,7 @@ const HomePage: FC = () => {
     useEffect(() => {
         const perfumesFromLocalStorage: Map<number, number> = new Map(JSON.parse(localStorage.getItem("perfumes") as string));
         dispatch(fetchCart(Array.from(perfumesFromLocalStorage.keys())))
-    }, []);
+    }, [dispatch]);
 
     return (
         <div>

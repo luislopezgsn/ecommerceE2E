@@ -18,7 +18,7 @@ const ForgotPassword: FC = () => {
 
     useEffect(() => {
         dispatch(formReset());
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         setEmail("");

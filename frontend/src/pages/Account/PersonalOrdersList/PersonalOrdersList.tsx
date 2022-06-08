@@ -16,7 +16,7 @@ const PersonalOrdersList: FC = () => {
 
     useEffect(() => {
         dispatch(fetchUserOrders());
-    }, []);
+    }, [dispatch]);
 
     return (
         <>

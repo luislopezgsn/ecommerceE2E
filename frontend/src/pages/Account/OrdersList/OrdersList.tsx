@@ -13,7 +13,7 @@ const OrdersList: FC = () => {
 
     useEffect(() => {
         dispatch(fetchAllUsersOrders());
-    }, []);
+    }, [dispatch]);
 
     return (<OrdersTable loading={loading} orders={adminOrders}/>);
 };
