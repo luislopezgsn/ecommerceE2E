@@ -11,6 +11,7 @@ E-commerce project developed using Spring Boot and React.js.
 * AWS: EC2, S3, Min.io, PostgreSQL RDS
 * Server Build: Maven
 * Client Build: npm, yarn, webpack
+* SMTP server: smt4dev
 
 ## Features
 
@@ -29,7 +30,7 @@ E-commerce project developed using Spring Boot and React.js.
 To build the backend and its postgres, you should run the following command:
 
 ```bash
-docker-compose build
+docker-compose build --no-cache
 ```
 
 To run the builds created before, you should run the following command:
@@ -38,18 +39,25 @@ To run the builds created before, you should run the following command:
 docker-compose up
 ```
 
-To run the frontend, you should go `fronted` folder and run the following commands:
-
-```bash
-npm install
-yarn start
-```
-
 Navigate to the <http://localhost:3000> to see the webpage
 
+> **NOTE:**
+>
+> Admin user for the webpage -> admin@gmail.com / admin
+>
+> Admin user for the min.io(bucket) -> admin / S1ngu1ar
+>
+> Admin user for postgres_app -> root / postgres
 
-> NOTE: Admin user for the webpage  
-> admin@gmail.com / admin
+## Docker images running
+
+| Docker image           | Port expose    |
+|:-----------------------|:---------------|
+| ecommerce_front        | 3000           |
+| ecommerce_back         | 8080           |
+| ecommerce_bucket       | 9001           |
+| smtp4dev               | 8081           |
+| ecommerce_postgres_app | 5432           |
 
 ## Swagger Documentation
 

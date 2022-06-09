@@ -14,7 +14,7 @@ import java.util.Arrays;
 @Component
 public class ControllerAspect {
 
-    Logger logger = LoggerFactory.getLogger(ControllerAspect.class);
+    static final Logger logger = LoggerFactory.getLogger(ControllerAspect.class);
 
     @Pointcut(value = "execution(* com.sngular.qa.ecommerce.controller.*.*(..))")
     public void executeLogging() {
@@ -28,7 +28,7 @@ public class ControllerAspect {
         String methodName = " METHOD: [" + joinPoint.getSignature().getName() + "()],";
         logger.info("{} {} REQUEST: ", className, methodName);
         if (joinPoint.getArgs().length > 0) {
-            Arrays.stream(joinPoint.getArgs()).forEach(x -> logger.info((String) x));
+            Arrays.stream(joinPoint.getArgs()).forEach(m -> logger.info(m.toString()));
         } else {
             logger.info("[]");
         }

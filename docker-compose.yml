@@ -22,7 +22,7 @@ services:
     ports:
       - '8080:8080'
     environment:
-       SPRING_PROFILES_ACTIVE: docker
+      SPRING_PROFILES_ACTIVE: docker
     networks:
       - arquitectura  
       
@@ -40,7 +40,7 @@ services:
       - '3000:3000'
     stdin_open: true
     environment:
-      - CHOKIDAR_USEPOLLING=true
+      CHOKIDAR_USEPOLLING: true
     networks:
       - arquitectura
     
@@ -54,8 +54,8 @@ services:
       - '9000:9000'
       - '9001:9001'
     environment:
-      - MINIO_ROOT_USER=admin
-      - MINIO_ROOT_PASSWORD=S1ngu1ar
+      MINIO_ROOT_USER: admin
+      MINIO_ROOT_PASSWORD: S1ngu1ar
     networks:
       - arquitectura
   
@@ -87,7 +87,7 @@ services:
       - '143:143'
     environment:
       #Specifies the server hostname. Used in auto-generated TLS certificate if enabled.
-      - ServerOptions__HostName=smtp4dev
+      ServerOptions__HostName: smtp4dev
     networks:
       - arquitectura
 
