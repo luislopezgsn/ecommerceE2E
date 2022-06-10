@@ -1,5 +1,6 @@
 import React, {FC} from 'react';
 import {Route, Switch} from "react-router-dom";
+import "./App.css";
 
 import Menu from "../Menu/Menu";
 import Contacts from "../Contacts/Contacts";
@@ -21,24 +22,26 @@ const App: FC = () => {
     return (
         <>
             <NavBar/>
-            <Switch>
-                <Route exact path="/" component={HomePage}/>
-                <Route exact path="/login" component={Login}/>
-                <Route exact path="/registration" component={Registration}/>
-                <Route exact path="/forgot" component={ForgotPassword}/>
-                <Route exact path="/reset/:code" component={ResetPassword}/>
-                <Route exact path="/activate/:code" component={Login}/>
-                <Route exact path="/menu" component={Menu}/>
-                <Route exact path="/product/:id" component={Product}/>
-                <Route exact path="/contacts" component={Contacts}/>
-                <Route exact path="/cart" component={Cart}/>
-                <Route exact path="/order" component={Order}/>
-                <Route exact path="/order/finalize" component={OrderFinalize}/>
-                <Route path="/oauth2/redirect" component={OAuth2RedirectHandler}/>
-                <Route path="/account" render={() => localStorage.getItem("token") ?
-                    (<Route component={Account}/>) : (<Route component={HomePage}/>)}/>
-                <Route path="*" component={HomePage}/>
-            </Switch>
+            <div className='main-body'>
+                <Switch>
+                    <Route exact path="/" component={HomePage}/>
+                    <Route exact path="/login" component={Login}/>
+                    <Route exact path="/registration" component={Registration}/>
+                    <Route exact path="/forgot" component={ForgotPassword}/>
+                    <Route exact path="/reset/:code" component={ResetPassword}/>
+                    <Route exact path="/activate/:code" component={Login}/>
+                    <Route exact path="/menu" component={Menu}/>
+                    <Route exact path="/product/:id" component={Product}/>
+                    <Route exact path="/contacts" component={Contacts}/>
+                    <Route exact path="/cart" component={Cart}/>
+                    <Route exact path="/order" component={Order}/>
+                    <Route exact path="/order/finalize" component={OrderFinalize}/>
+                    <Route path="/oauth2/redirect" component={OAuth2RedirectHandler}/>
+                    <Route path="/account" render={() => localStorage.getItem("token") ?
+                        (<Route component={Account}/>) : (<Route component={HomePage}/>)}/>
+                    <Route path="*" component={HomePage}/>
+                </Switch>
+            </div>
             <Footer/>
         </>
     );
