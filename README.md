@@ -71,7 +71,7 @@ Navigate to the <http://localhost:3000> to see the webpage
 
 |                         Email template                         |                      List of users                       |
 |:--------------------------------------------------------------:|:--------------------------------------------------------:|
-| ![Email template](https://i.ibb.co/bmKTLPJ/email-template.jpg) | ![List of users](https://i.ibb.co/T88cFZt/all-users.jpg) | 
+| ![Email template](https://i.ibb.co/bmKTLPJ/email-template.jpg) | ![List of users](https://i.ibb.co/T88cFZt/all-users.jpg) |
 
 |                      List of orders                       |                       User order page                       |
 |:---------------------------------------------------------:|:-----------------------------------------------------------:|
