@@ -11,16 +11,16 @@ const Footer: FC = () => {
                     <div className="footer-right">
                         <h3>Social networks</h3>
                         <a href="https://www.linkedin.com/company/sngular">
-                            <i className="fab fa-linkedin fa-2x mr-3" style={{color: "white"}}></i>
+                            <i id="linkedin" className="fab fa-linkedin fa-2x mr-3" style={{color: "white"}}></i>
                         </a>
                         <a href="https://twitter.com/sngular">
-                            <i className="fab fa-twitter fa-2x mr-3" style={{color: "white"}}></i>
+                            <i id="twitter" className="fab fa-twitter fa-2x mr-3" style={{color: "white"}}></i>
                         </a>
                         <a href="https://www.youtube.com/channel/UCJDkEoAAZclorR4jEF9Kv3Q">
-                            <i className="fab fa-youtube fa-2x mr-3" style={{color: "white"}}></i>
+                            <i id="youtube" className="fab fa-youtube fa-2x mr-3" style={{color: "white"}}></i>
                         </a>
                         <a href="https://qa.sngular.com/es">
-                            <i className="fas fa-globe fa-2x mr-3" style={{color: "white"}}></i>
+                            <i id="sngular" className="fas fa-globe fa-2x mr-3" style={{color: "white"}}></i>
                         </a>
                     </div>
                 </div>

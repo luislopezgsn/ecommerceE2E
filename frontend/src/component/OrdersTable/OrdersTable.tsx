@@ -38,7 +38,7 @@ const OrdersTable: FC<PropsType> = ({loading,orders}) => {
                                 <th>{order.email}</th>
                                 <th>{order.totalPrice}</th>
                                 <th>
-                                    <Link to={{pathname: `/account/user/orders/${order.id}`, state: order}}>
+                                    <Link id={"order" + order.id} to={{pathname: `/account/user/orders/${order.id}`, state: order}}>
                                         Show more
                                     </Link>
                                 </th>

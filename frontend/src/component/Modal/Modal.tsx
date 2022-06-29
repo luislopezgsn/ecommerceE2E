@@ -18,7 +18,7 @@ const Modal: FC<PropTypes> = ({perfume,deletePerfumeHandler, setModalActive}) =>
                             <div className="modal-header">
                                 <h5 className="modal-title">Delete perfume</h5>
                                 <button type="button" className="close" onClick={() => setModalActive(false)}>
-                                    <span aria-hidden="true">&times;</span>
+                                    <span id="close-modal" aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div className="row modal-body">
@@ -35,11 +35,13 @@ const Modal: FC<PropTypes> = ({perfume,deletePerfumeHandler, setModalActive}) =>
                                 </div>
                             </div>
                             <div className="modal-footer">
-                                <button type="button"
+                                <button id="delete"
+                                        type="button"
                                         className="btn btn-danger"
                                         onClick={() => deletePerfumeHandler(perfume?.id)}>Delete
                                 </button>
-                                <button type="button"
+                                <button id="close"
+                                        type="button"
                                         className="btn btn-secondary"
                                         data-dismiss="modal"
                                         onClick={() => setModalActive(false)}>Close

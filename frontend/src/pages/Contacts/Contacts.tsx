@@ -8,7 +8,9 @@ const Contacts: FC = () => {
             <h4><FontAwesomeIcon className="ml-2 mr-2" icon={faInfoCircle}/>Contacts</h4>
             <br/>
             <p>
-                <b><FontAwesomeIcon className="ml-2 mr-2" icon={faInbox}/>E-mail:</b> qa.info@sngular.com</p>
+                <b><FontAwesomeIcon className="ml-2 mr-2" icon={faInbox}/>E-mail:</b>
+                <a id="email" href="mailto:qa.info@sngular.com?Subject=QA%20Sngular%20questions"> qa.info@sngular.com</a>
+            </p>
             <br/>
             <h4><FontAwesomeIcon className="ml-2 mr-2" icon={faBusinessTime}/>Working time</h4>
             <p>The online store is open from 08:00 to 20:00 without breaks and weekends. <br/>

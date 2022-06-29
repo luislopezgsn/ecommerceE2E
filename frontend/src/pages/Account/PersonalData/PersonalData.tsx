@@ -42,10 +42,10 @@ const PersonalData: FC = () => {
                     <span className="personal_data_text">{postIndex}</span>
                 </p>
                 {location.pathname === "/account/user/info" ?
-                    <Link to={"/account/user/info/edit"} className="btn btn-dark personal_data_btn">
+                    <Link to={"/account/user/info/edit"} id="edit" className="btn btn-dark personal_data_btn">
                         <FontAwesomeIcon className="mr-2" icon={faEdit}/> Edit
                     </Link> :
-                    <Link to={"/account/user/info"} className="btn btn-dark personal_data_btn">
+                    <Link to={"/account/user/info"} id="hide" className="btn btn-dark personal_data_btn">
                         <FontAwesomeIcon className="mr-2" icon={faEyeSlash}/> Hide
                     </Link>}
             </div>

@@ -39,7 +39,7 @@ const PerfumeCardsSlider: FC = () => {
                                             <StarRating perfumeRating={perfume.perfumeRating} />
                                             <h6>$<span>{perfume.price}</span>.00</h6>
                                             <Link to={`/product/${perfume.id}`}>
-                                            <span className="btn btn-dark">
+                                            <span id={perfume.perfumeTitle} className="btn btn-dark">
                                                 SHOW MORE
                                             </span>
                                             </Link>

@@ -20,7 +20,7 @@ const SliderBrands: FC = () => {
                         return (
                             <div className="col-2 float-left" key={index}>
                                 <Link to={{pathname: "/menu", state: {id: brand.name}}}>
-                                    <img className="img-fluid" src={brand.url} alt={brand.name}/>
+                                    <img id={brand.name} className="img-fluid" src={brand.url} alt={brand.name}/>
                                 </Link>
                             </div>
                         )
@@ -31,7 +31,7 @@ const SliderBrands: FC = () => {
                         return (
                             <div className="col-2 float-left" key={index}>
                                 <Link to={{pathname: "/menu", state: {id: brand.name}}}>
-                                    <img className="img-fluid" src={brand.url} alt={brand.name}/>
+                                    <img id={brand.name} className="img-fluid" src={brand.url} alt={brand.name}/>
                                 </Link>
                             </div>
                         )
@@ -42,7 +42,7 @@ const SliderBrands: FC = () => {
                         return (
                             <div className="col-2 float-left" key={index}>
                                 <Link to={{pathname: "/menu", state: {id: brand.name}}}>
-                                    <img className="img-fluid" src={brand.url} alt={brand.name}/>
+                                    <img id={brand.name} className="img-fluid" src={brand.url} alt={brand.name}/>
                                 </Link>
                             </div>
                         )
