@@ -32,7 +32,7 @@ const PerfumeCardItem: FC<PropsType> = ({key, perfume, colSize, link, btnName}) 
                 </div>
                 <div className="text-center align-items-end mb-3">
                     <Link to={`${link}/${perfume.id}`}>
-                        <span className="btn btn-dark">{btnName}</span>
+                        <span id={perfume.perfumeTitle} className="btn btn-dark">{btnName}</span>
                     </Link>
                 </div>
             </div>

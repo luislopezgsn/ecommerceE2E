@@ -40,7 +40,7 @@ const SearchForm: FC<PropsType> = ({data, searchByData, setFilteredData, setSear
             <div className="row">
                 {searchByData && searchByData.length > 0 &&
                 <div className="col-md-4">
-                    <select className="form-control" value={searchBy}
+                    <select id="searchBy" className="form-control" value={searchBy}
                             onChange={(event) => setSearchBy(event.target.value)}>
                         {searchByData.map((data, index) => (
                             <option key={index} value={data.value}>{data.label}</option>

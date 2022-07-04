@@ -8,6 +8,7 @@ import {logout} from "../../redux/thunks/auth-thunks";
 import "./NavBar.css";
 import {AppStateType} from "../../redux/reducers/root-reducer";
 import {Perfume} from "../../types/types";
+import logo from "../../img/logo.png";
 
 const NavBar: FC = () => {
     const dispatch = useDispatch();
@@ -24,12 +25,12 @@ const NavBar: FC = () => {
     if (localStorage.getItem("isLoggedIn") || isLoggedIn) {
         links = (
             <li className="nav-item">
-                <Link to={"/account"}><span className="nav-link pl-5 pr-5">
+                <Link to={"/account"}><span id="my_account" className="nav-link pl-5 pr-5">
                          <FontAwesomeIcon className="mr-2" icon={faUser}/>MY ACCOUNT</span></Link>
             </li>
         );
         signOut = (
-            <Link to={"/"} onClick={handleLogout}>
+            <Link id="exit" to={"/"} onClick={handleLogout}>
                 <FontAwesomeIcon className="mr-2" icon={faSignOutAlt}/>EXIT
             </Link>
         );
@@ -37,11 +38,11 @@ const NavBar: FC = () => {
         links = (
             <>
                 <li className="nav-item">
-                    <Link to={"/login"} className="nav-link pl-5 pr-3">
+                    <Link id="sign_in" to={"/login"} className="nav-link pl-5 pr-3">
                         <FontAwesomeIcon className="mr-2" icon={faSignInAlt}/>SIGN IN</Link>
                 </li>
                 <li className="nav-item">
-                    <Link to={"/registration"} className="nav-link">
+                    <Link id="sign_up" to={"/registration"} className="nav-link">
                         <FontAwesomeIcon className="mr-2" icon={faUserPlus}/>SIGN UP</Link>
                 </li>
             </>
@@ -52,7 +53,7 @@ const NavBar: FC = () => {
     return (
         <div>
             <div id="header" className="container-fluid header-top d-none d-md-block pb-5 pt-5">
-                <img src="https://i.ibb.co/fqYvrL8/LOGO4.jpg" className="rounded mx-auto d-block" alt="perfume webstore"/>
+                <img src={logo} className="rounded mx-auto d-block" alt="perfume webstore"/>
             </div>
             <div className="container-fluid bg-black">
                 <nav id="navbar-main" className={`container navbar navbar-expand-lg bg-black text-white `}
@@ -60,19 +61,19 @@ const NavBar: FC = () => {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mr-auto ">
                             <li className="nav-item">
-                                <Link to={"/"}><span className="nav-link pl-5 pr-5">HOME</span></Link>
+                                <Link to={"/"}><span id="home" className="nav-link pl-5 pr-5">HOME</span></Link>
                             </li>
                             <li className="nav-item">
                                 <Link to={{pathname: "/menu", state: {id: "all"}}}>
-                                    <span className="nav-link pl-5 pr-5">PERFUMES</span></Link>
+                                    <span id="perfumes" className="nav-link pl-5 pr-5">PERFUMES</span></Link>
                             </li>
                             <li className="nav-item">
-                                <Link to={"/contacts"}><span className="nav-link pl-5 pr-5">CONTACTS</span></Link>
+                                <Link to={"/contacts"}><span id="contacts" className="nav-link pl-5 pr-5">CONTACTS</span></Link>
                             </li>
                         </ul>
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item">
-                                <Link className="nav-link" to={"/cart"}>
+                                <Link id="cart" className="nav-link" to={"/cart"}>
                                     <i className="fas fa-shopping-cart fa-lg pl-5" style={{color: "white"}}></i>
                                     <h5 className="d-inline"
                                         style={{position: "relative", right: "15px", bottom: "8px"}}>

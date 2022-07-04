@@ -17,7 +17,7 @@ const CheckboxRadio: FC<PropsType> = ({handleFilters, list}) => {
                         type="radio"
                         name="price"
                         value={value.id}/>
-                    <span className="cr"><i className="cr-icon fas fa-check"></i></span>
+                    <span className="cr"><i id={value.name} className="cr-icon fas fa-check"></i></span>
                     {value.name}
                 </label>
             </div>

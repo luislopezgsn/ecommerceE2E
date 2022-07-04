@@ -78,7 +78,7 @@ const ManageUserOrder: FC = () => {
                     return (
                         <tr key={orderItem.id}>
                             <th><Link
-                                to={`/product/${orderItem.perfume.id}`}>{orderItem.perfume.id}</Link></th>
+                                id={"perfume" + orderItem.perfume.id} to={`/product/${orderItem.perfume.id}`}>{orderItem.perfume.id}</Link></th>
                             <th>{orderItem.perfume.perfumer}</th>
                             <th>{orderItem.perfume.perfumeTitle}</th>
                             <th>{orderItem.quantity}</th>

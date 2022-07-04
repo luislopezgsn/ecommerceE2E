@@ -15,7 +15,7 @@ const PaginationItem: FC<PropsType> = ({pagination, prevPage, changePage, nextPa
                 <a className="page-link" href="#">Pages</a>
             </li>
             <li className="page-item">
-                <a className="page-link text-dark" href="#" aria-label="Previous" onClick={prevPage}>
+                <a id="previous_page" className="page-link text-dark" href="#" aria-label="Previous" onClick={prevPage}>
                     <span aria-hidden="true">&laquo;</span>
                     <span className="sr-only">Previous</span>
                 </a>
@@ -25,7 +25,8 @@ const PaginationItem: FC<PropsType> = ({pagination, prevPage, changePage, nextPa
                     if (page.current) {
                         return (
                             <li key={index} className="page-item active">
-                                <a href="#"
+                                <a id={"page" + page.id}
+                                   href="#"
                                    className="page-link bg-dark border-dark"
                                    onClick={(event) => changePage(page.id, event)}>{page.id}</a>
                             </li>
@@ -33,7 +34,8 @@ const PaginationItem: FC<PropsType> = ({pagination, prevPage, changePage, nextPa
                     } else {
                         return (
                             <li key={index} className="page-item">
-                                <a href="#"
+                                <a id={"page" + page.id}
+                                   href="#"
                                    className="page-link text-dark"
                                    onClick={(event) => changePage(page.id, event)}>{page.id}</a>
                             </li>
@@ -48,7 +50,7 @@ const PaginationItem: FC<PropsType> = ({pagination, prevPage, changePage, nextPa
                 }
             })}
             <li className="page-item">
-                <a className="page-link text-dark" href="#" aria-label="Next" onClick={nextPage}>
+                <a id="next_page" className="page-link text-dark" href="#" aria-label="Next" onClick={nextPage}>
                     <span aria-hidden="true">&raquo;</span>
                     <span className="sr-only">Next</span>
                 </a>

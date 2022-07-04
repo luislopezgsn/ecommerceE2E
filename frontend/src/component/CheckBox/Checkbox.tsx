@@ -31,7 +31,7 @@ const CheckBox: FC<PropsType> = ({handleFilters, list}) => {
                         type="checkbox"
                         checked={checked.indexOf(value.name) !== -1}/>
                     <span className="cr">
-                        <i className="cr-icon fas fa-check"></i></span>
+                        <i id={value.name} className="cr-icon fas fa-check"></i></span>
                     {value.name}
                 </label>
             </div>

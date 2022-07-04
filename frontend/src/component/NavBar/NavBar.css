@@ -21,6 +21,10 @@
     /*position: relative;*/
 }
 
+.d-block {
+    width: 30%;
+}
+
 .fixed {
     position: fixed;
     /*width: 100%;*/

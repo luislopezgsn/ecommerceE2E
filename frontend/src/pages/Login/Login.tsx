@@ -71,19 +71,19 @@ const Login: FC<RouteComponentProps<{ code: string }>> = ({match}) => {
                             <button type="submit" className="btn btn-dark mx-3">
                                 <FontAwesomeIcon className="mr-3" icon={faSignInAlt}/>Sign in
                             </button>
-                            <Link to={"/forgot"} style={{position: "relative", top: "8px"}}>Forgot password?</Link>
+                            <Link id="forgot_password" to={"/forgot"} style={{position: "relative", top: "8px"}}>Forgot password?</Link>
                         </div>
                     </form>
                 </div>
                 <div className="col-md-6">
                     <div className="mt-5">
-                        <a className="btn btn-block social-btn google"
+                        <a id="google" className="btn btn-block social-btn google"
                            href="http://localhost:8080/oauth2/authorize/google">
                             <img src={googleLogo} alt="google"/>Log in with Google</a>
-                        <a className="btn btn-block social-btn facebook"
+                        <a id="facebook" className="btn btn-block social-btn facebook"
                            href="http://localhost:8080/oauth2/authorize/facebook">
                             <img src={facebookLogo} alt="facebook"/>Log in with Facebook</a>
-                        <a className="btn btn-block social-btn github"
+                        <a id="github" className="btn btn-block social-btn github"
                            href="http://localhost:8080/oauth2/authorize/github">
                             <img src={githubLogo} alt="github"/>Log in with Github</a>
                     </div>

@@ -92,11 +92,12 @@ const PerfumeListComponent:FC<PropsType> = ({data, itemsPerPage,startFrom,search
                                             <h6><span>${perfume.price}</span>.00</h6>
                                         </div>
                                         <div className="btn-group text-center mb-3">
-                                            <Link type="button" className="btn btn-dark ml-2"
+                                            <Link type="button" id="edit" className="btn btn-dark ml-2"
                                                   to={`/account/admin/perfumes/${perfume.id}`}>
                                                 <FontAwesomeIcon className="fa-xs" icon={faEdit}/> Edit
                                             </Link>
-                                            <button className="btn btn-warning mr-2"
+                                            <button id="delete"
+                                                    className="btn btn-warning mr-2"
                                                     onClick={() => showDeleteModalWindow(perfume)}>
                                                 <FontAwesomeIcon className="fa-xs" icon={faTrash}/> Delete
                                             </button>
