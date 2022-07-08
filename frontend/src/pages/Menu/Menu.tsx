@@ -49,7 +49,7 @@ const Menu: FC = () => {
     };
 
     const handlePrice = (value: number): Array<number> => {
-        let find = price.find((item) => item.id === value);
+        let find = price.find((item) => item.id == value);
         return find!.array;
     };
 
@@ -58,8 +58,7 @@ const Menu: FC = () => {
         newFilters[category] = filters;
 
         if (category === "prices") {
-            let priceValues = handlePrice(filters as number);
-            newFilters[category] = priceValues;
+            newFilters[category] = handlePrice(filters as number);
         }
         getProducts({...newFilters, sortByPrice})
         setFilterParams(newFilters);

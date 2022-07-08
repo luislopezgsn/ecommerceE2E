@@ -28,7 +28,7 @@ const PerfumeCardItem: FC<PropsType> = ({key, perfume, colSize, link, btnName}) 
                     <StarRating perfumeRating={perfume.perfumeRating}/>
                     <h6>{perfume.perfumeTitle}</h6>
                     <h6>{perfume.perfumer}</h6>
-                    <h6><span>${perfume.price}</span>.00</h6>
+                    <h6><span>{perfume.price}</span>.00 €</h6>
                 </div>
                 <div className="text-center align-items-end mb-3">
                     <Link to={`${link}/${perfume.id}`}>

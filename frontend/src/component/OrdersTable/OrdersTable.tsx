@@ -24,7 +24,7 @@ const OrdersTable: FC<PropsType> = ({loading,orders}) => {
                         <th>Date</th>
                         <th>Customer</th>
                         <th>Email</th>
-                        <th>Sum, $</th>
+                        <th>Sum, €</th>
                         <th></th>
                     </tr>
                     </thead>

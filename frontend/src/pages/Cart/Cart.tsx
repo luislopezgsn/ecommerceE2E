@@ -116,7 +116,7 @@ const Cart: FC = () => {
                                             <div className="col-2">
                                                 <div className="card-body">
                                                     <h5 className="card-title">
-                                                        <span>$ {perfume.price * perfumeInCart.get(perfume.id)}</span>
+                                                        <span>{perfume.price * perfumeInCart.get(perfume.id)} €</span>
                                                     </h5>
                                                     <button className="btn btn-warning mb-2"
                                                             onClick={() => deleteFromCart(perfume.id)}>
@@ -132,7 +132,7 @@ const Cart: FC = () => {
                             <hr className="my-3"/>
                             <div className="row">
                                 <div className="col-9">
-                                    <p className="h5 text-right">Total: $ <span>{totalPrice}</span></p>
+                                    <p className="h5 text-right">Total: <span>{totalPrice} €</span></p>
                                 </div>
                                 <div className="col-3">
                                     <div className="form-row">

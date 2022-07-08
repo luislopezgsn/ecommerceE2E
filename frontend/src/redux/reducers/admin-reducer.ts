@@ -12,10 +12,10 @@ import {
     FETCH_ALL_USERS_BY_QUERY_SUCCESS,
     FETCH_ALL_USERS_ORDERS_BY_QUERY_SUCCESS,
     FETCH_USER_ORDERS_BY_QUERY_SUCCESS,
-    LOADING_DATA
+    LOADING_DATA,
+    AdminActionTypes
 } from "../action-types/admin-action-types";
 import {Order, PerfumeErrors, User} from "../../types/types";
-import {AdminActionTypes} from "../action-types/admin-action-types";
 
 export type InitialStateType = {
     orders: Array<Order>

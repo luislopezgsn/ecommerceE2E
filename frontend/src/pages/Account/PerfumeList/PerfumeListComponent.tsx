@@ -89,7 +89,7 @@ const PerfumeListComponent:FC<PropsType> = ({data, itemsPerPage,startFrom,search
                                             <StarRating perfumeRating={perfume.perfumeRating}/>
                                             <h6>{perfume.perfumeTitle}</h6>
                                             <h6>{perfume.perfumer}</h6>
-                                            <h6><span>${perfume.price}</span>.00</h6>
+                                            <h6><span>{perfume.price}</span>.00 €</h6>
                                         </div>
                                         <div className="btn-group text-center mb-3">
                                             <Link type="button" id="edit" className="btn btn-dark ml-2"
