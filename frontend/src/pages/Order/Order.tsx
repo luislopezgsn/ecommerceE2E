@@ -47,10 +47,10 @@ const Order: FC = () => {
         event.preventDefault();
 
         const perfumesId = Object.fromEntries(new Map(JSON.parse(localStorage.getItem("perfumes") as string)));
-        const validateEmailError: string = validateEmail(email);
+        const validateEmailE: string = validateEmail(email);
 
-        if (validateEmailError) {
-            setValidateEmailError(validateEmailError);
+        if (validateEmailE) {
+            setValidateEmailError(validateEmailE);
         } else {
             setValidateEmailError("");
             const order = {firstName, lastName, city, address, postIndex, phoneNumber, email, perfumesId, totalPrice};
@@ -178,7 +178,7 @@ const Order: FC = () => {
                                                 <div className="card-body text-center">
                                                     <h5>{perfume.perfumeTitle}</h5>
                                                     <h6>{perfume.perfumer}</h6>
-                                                    <h6><span>Price: $ {perfume.price}</span>.00</h6>
+                                                    <h6><span>Price: {perfume.price}</span>.00 €</h6>
                                                     <h6>
                                                         <span>Quantity: {perfumesFromLocalStorage.get(perfume.id)}</span>
                                                     </h6>
@@ -193,7 +193,7 @@ const Order: FC = () => {
                             <FontAwesomeIcon icon={faCheckCircle}/> Validate order
                         </button>
                         <div className="row">
-                            <h4>To pay : $ <span>{totalPrice}</span>.00</h4>
+                            <h4>To pay : <span>{totalPrice}</span>.00 €</h4>
                         </div>
                     </div>
                 </div>

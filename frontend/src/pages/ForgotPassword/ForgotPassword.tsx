@@ -26,10 +26,10 @@ const ForgotPassword: FC = () => {
 
     const onClickSend = (event: FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
-        const validateEmailError: string = validateEmail(email);
+        const validateEmailE: string = validateEmail(email);
 
-        if (validateEmailError) {
-            setValidateEmailError(validateEmailError);
+        if (validateEmailE) {
+            setValidateEmailError(validateEmailE);
         } else {
             dispatch(forgotPassword({email: email}));
         }

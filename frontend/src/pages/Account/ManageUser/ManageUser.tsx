@@ -93,7 +93,7 @@ const ManageUser: FC<RouteComponentProps<{ id: string }>> = ({match}) => {
                                                 <th>{order.city}</th>
                                                 <th>{order.address}</th>
                                                 <th>{order.postIndex}</th>
-                                                <th>{order.totalPrice}.0 $</th>
+                                                <th>{order.totalPrice}.0 €</th>
                                                 <th>
                                                     <Link to={{
                                                         pathname: `/account/user/orders/${order.id}`,

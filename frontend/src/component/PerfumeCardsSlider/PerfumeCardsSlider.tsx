@@ -37,7 +37,7 @@ const PerfumeCardsSlider: FC = () => {
                                             <h5>{perfume.perfumeTitle}</h5>
                                             <h6>{perfume.perfumer}</h6>
                                             <StarRating perfumeRating={perfume.perfumeRating} />
-                                            <h6>$<span>{perfume.price}</span>.00</h6>
+                                            <h6><span>{perfume.price}</span>.00 €</h6>
                                             <Link to={`/product/${perfume.id}`}>
                                             <span id={perfume.perfumeTitle} className="btn btn-dark">
                                                 SHOW MORE

@@ -19,14 +19,14 @@ const CarouselImageSlider: FC = () => {
     const settings = {
         indicators: false,
         fade: true,
-        infinite: true,
+        infinite: "true",
         interval: 3000
     }
 
     return (
         <div>
             <Carousel {...settings}>
-                {sliderItems.map((item, index) => {
+                {sliderItems.map((item) => {
                     return (
                         <Carousel.Item key={item.id}>
                             <Link to={`/product/${item.id}`}>

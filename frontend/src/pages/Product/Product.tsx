@@ -58,7 +58,7 @@ const Product: FC<RouteComponentProps<{ id: string }>> = ({match}) => {
     const addToCart = (): void => {
         const perfumeId: number | undefined = perfume.id;
         let data: string | null = localStorage.getItem("perfumes");
-        let cart: Map<number, any> = data ? new Map(JSON.parse(data as string)) : new Map();
+        let cart: Map<number, any> = data ? new Map(JSON.parse(data)) : new Map();
 
         if (cart.has(perfumeId as number)) {
             cart.set(perfumeId as number, cart.get(perfumeId as number) + 1);
@@ -71,7 +71,7 @@ const Product: FC<RouteComponentProps<{ id: string }>> = ({match}) => {
 
     const addReview = (event: FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
-        const review: ReviewData = {perfumeId: match.params.id as string, author, message, rating}
+        const review: ReviewData = {perfumeId: match.params.id, author, message, rating}
         dispatch(addReviewToPerfume(review));
     };
 
@@ -112,7 +112,7 @@ const Product: FC<RouteComponentProps<{ id: string }>> = ({match}) => {
                         </div>
                         <p style={{color: "#54C0A1"}}>In Stock</p>
                         <div className="row ml-1">
-                            <h6 className="mr-5"><span>${perfume.price}</span>.00</h6>
+                            <h6 className="mr-5"><span>{perfume.price}</span>.00 €</h6>
                             <button type="submit"
                                     className="btn btn-success mx-3"
                                     onClick={addToCart}>
