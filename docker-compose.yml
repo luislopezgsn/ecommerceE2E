@@ -45,11 +45,8 @@ services:
       - arquitectura
     
   bucket:
-    build:
-      context: ./min.io
-      dockerfile: Dockerfile
-    volumes:
-      - './min.io/data:/data'
+    image: minio/minio
+    entrypoint: "minio server /data --console-address :9001"
     ports:
       - '9000:9000'
       - '9001:9001'
@@ -64,15 +61,11 @@ services:
     image: minio/mc
     volumes:
       - './scripts:/scripts'
+      - './min.io/init_scripts:/init_scripts'
+      - './min.io/images:/images'
     depends_on:
       - bucket
-    entrypoint: >
-      /bin/sh -c "
-      /scripts/wait-for-it.sh bucket:9000;
-      /usr/bin/mc alias set myminio http://bucket:9000 admin S1ngu1ar;
-      /usr/bin/mc policy set public myminio/perfume-images;
-      exit 0;
-      "
+    entrypoint: "/init_scripts/init_bucket.sh"
     networks:
       - arquitectura
 
