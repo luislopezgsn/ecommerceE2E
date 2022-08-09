@@ -18,7 +18,7 @@ const PerfumeCardsSlider: FC = () => {
         // GraphQL example
         dispatch(fetchPerfumesByIdsQuery(perfumesId));
         // dispatch(fetchPerfumesByIds(perfumesId));
-    }, [dispatch, perfumesId]);
+    }, []);
 
     const addCarouselItems = (array: Array<Perfume>, counter: number) => {
 
