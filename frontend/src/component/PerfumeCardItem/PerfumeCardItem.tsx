@@ -7,16 +7,16 @@ import {Perfume} from "../../types/types";
 import StarRating from "../StarRating/StarRating";
 
 type PropsType = {
-    key: number
+    myKey: number
     perfume: Perfume
     colSize: number
     link: string
     btnName: string
 };
 
-const PerfumeCardItem: FC<PropsType> = ({key, perfume, colSize, link, btnName}) => {
+const PerfumeCardItem: FC<PropsType> = ({myKey, perfume, colSize, link, btnName}) => {
     return (
-        <div key={key} className={`col-lg-${colSize}`}>
+        <div key={myKey} className={`col-lg-${colSize}`}>
             <div className="card mb-5" style={{height: "320px"}}>
                 <div style={{height: "92px", display: "flex", justifyContent: "center", alignItems: "center"}}>
                     <LazyLoadImage
