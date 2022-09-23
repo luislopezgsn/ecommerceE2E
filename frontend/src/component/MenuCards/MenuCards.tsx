@@ -80,6 +80,7 @@ const MenuCards: FC<PropsType> = ({data, loading, itemsPerPage, startFrom, searc
                             return (
                                 <PerfumeCardItem
                                     key={perfume.id}
+                                    myKey={perfume.id}
                                     perfume={perfume}
                                     colSize={3}
                                     link={"/product"}
