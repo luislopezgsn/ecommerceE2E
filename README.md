@@ -44,10 +44,11 @@ Navigate to the <http://localhost:3000> to see the webpage
 > **NOTE:**
 >
 > Admin user for the webpage -> admin@gmail.com / admin
+> Regular user for the webpage -> test123@test.com / admin
 >
 > Admin user for the min.io(bucket) -> admin / S1ngu1ar
 >
-> Admin user for postgres_app -> root / postgres
+> Admin user for postgres_app -> postgres / root
 
 ## Docker images running
 
