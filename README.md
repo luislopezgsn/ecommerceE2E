@@ -64,6 +64,27 @@ Navigate to the <http://localhost:3000> to see the webpage
 
 <http://localhost:8080/swagger-ui.html>
 
+## Running Docker in Windows
+In order to run Docker in Windows properly, you need to install Linux on Windows (WSL). The Docker engine used in windows runs inside this Linux.
+To install WSL on Windows 10 or higher, you should open a Power Shell as administrator an run this command:
+```powershell
+wsl --install
+```
+This  method of installation has been improved in a lot with the latest Windows Updates. In order to do it so easily, you need to have your Windows 10/11 up-to-date. Anyway you can check [Microsoft's WSL installation guide](https://learn.microsoft.com/en-us/windows/wsl/install)
+
+This installs an Ubuntu Linux distribution by default.
+Once the installation proccess is finished, it is very recommended you upgrade the linux distribution too:
+```bash
+sudo apt update && sudo apt -y upgrade
+```
+
+Notice you should enter now the docker commands in an Ubuntu terminal, not Window's PowerShell or CMD.
+To get an Ubuntu terminal you can:
+ - [Windows 10 and 11] From the Windows Start Menu, select 'Ubuntu'
+ - [Windows 11] Open the ***Terminal application*** from the start menu, then click on the down-arrow  button (v) in the menu bar and select Ubuntu
+    - [Windows 10] You can do the previous point in Windows 10, installing [Windows Terminal](https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701?hl=es-es&gl=es&rtc=1=) first, which is shipped by default on Windows 11.
+- [Windows 10 and 11] Installing [ConEmu](https://conemu.github.io/), an alternative terminal with very useful functions.
+
 ## Screenshots
 
 |                    Menu page                     |                     Product page                      |
