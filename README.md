@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # :hibiscus: Ecommerce
 
 E-commerce project developed using Spring Boot and React.js.
@@ -106,3 +107,7 @@ To get an Ubuntu terminal you can:
 |                    Edit perfume list                    |                        Edit perfume page                        |
 |:-------------------------------------------------------:|:---------------------------------------------------------------:|
 | ![Edit perfume list](https://i.ibb.co/fkFSnFy/edit.jpg) | ![Edit perfume page](https://i.ibb.co/cTddspr/edit-perfume.jpg) |
+=======
+# ecommerceE2E
+ecommerce E2E project lo reinforce Cypress e2e testing concepts
+>>>>>>> fc43a0e9581c2cb7af55ef0b4dce9205684752ae
