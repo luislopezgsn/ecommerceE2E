@@ -17,8 +17,8 @@ describe('Menu Page - Brand Selector & Search Filter', () => {
     });
   
     it('should filter items when selecting a brand', () => {
-      cy.get('#searchBy', { timeout: 10000 }).select('perfumer'); 
-      cy.get('.card', { timeout: 10000 }).should('exist'); // Updated to match actual item class
+      cy.get('#searchBy', { timeout: 10000 }).select('perfumer');
+      cy.get('.card', { timeout: 10000 }).should('exist');
     });
   
     it('should verify the search field exists and is functional', () => {
@@ -29,7 +29,7 @@ describe('Menu Page - Brand Selector & Search Filter', () => {
   
     it('should filter results when typing in the search field', () => {
       cy.get('input[placeholder="Search..."]', { timeout: 10000 }).type('Chanel');
-      cy.get('button[type="submit"].btn-dark', { timeout: 10000 }).click(); // Wait for search filter to apply
+      cy.get('button[type="submit"].btn-dark', { timeout: 10000 }).click();
       cy.get('.card', { timeout: 10000 }).should('exist');
       cy.get('.card', { timeout: 10000 }).each(($el) => {
         cy.wrap($el).should('contain.text', 'Chanel');
@@ -41,6 +41,19 @@ describe('Menu Page - Brand Selector & Search Filter', () => {
       cy.get('.card', { timeout: 10000 }).should('exist');
       cy.get('.card').each(($el) => {
         cy.wrap($el).should('contain.text', 'Dior');
+      });
+    });
+  
+    it('should support multi-brand filtering', () => {
+      cy.get('i#Chanel').first().click({ force: true });
+      cy.get('i#Dior').first().click({ force: true });
+      cy.get('.card', { timeout: 10000 }).should('exist');
+      cy.get('.card').each(($el) => {
+        cy.wrap($el).invoke('text').then((text) => {
+          const hasChanel = text.includes('Chanel');
+          const hasDior = text.includes('Dior');
+          expect(hasChanel || hasDior).to.be.true;
+        });
       });
     });
   
