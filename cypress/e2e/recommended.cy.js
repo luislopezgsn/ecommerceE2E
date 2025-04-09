@@ -1,35 +1,40 @@
-describe('Perfume Carousel', () => {
+describe('Perfume Card Test', () => {
     beforeEach(() => {
-      cy.visit('http://localhost:3000'); // Ensure the URL is correct
-  
-      // Intercept the requests
-      cy.intercept('POST', '/api/v1/perfumes/graphql*').as('getPerfumes');
-      cy.intercept('POST', '/api/v1/users/cart*').as('getCart');
+      // Visit the page that contains the perfume card
+      cy.visit('http://localhost:3000'); // Update the URL as needed
     });
   
-    it('should display the carousel and multiple perfume cards', () => {
-      // Ensure the first .carousel is scrolled into view
-      cy.get('.carousel').first().scrollIntoView();
+    it('should display the perfume card correctly', () => {
+      // Check if the perfume card is visible
+      cy.get('.card').should('be.visible');
+  
+      // Check if the perfume name is displayed
+      cy.get('.card-body h5').should('exist');
+  
+      // Check if the perfume brand is displayed
+      cy.get('.card-body h6').first().should('exist');
+  
+      // Check if the perfume image exists and is visible
+      cy.get('.card img').should('have.attr', 'src').and('include', 'Creed Aventus.jpg');
       
-      // Wait for the XHR requests to complete
-      cy.wait('@getPerfumes', { timeout: 10000 });
-      cy.wait('@getCart', { timeout: 10000 });
-      
-      // Check if the carousel exists and is visible
-      cy.get('.carousel').should('exist').and('be.visible');
-      
-      // Check if multiple cards are displayed (ensure length is greater than 1)
-      cy.get('.card')
-        .should('have.length.greaterThan', 1) // Ensure there are multiple cards
-        .each(($card) => {
-          cy.wrap($card).within(() => {
-            // Check if the card-body exists and is visible, with a timeout of 10 seconds
-            cy.get('.card-body', { timeout: 10000 }).should('exist').and('be.visible');
-            
-            // Check if the card has an image, with a timeout of 10 seconds
-            cy.get('img', { timeout: 10000 }).should('exist').and('be.visible'); 
-          });
-        });
+      // Check if the price is displayed correctly
+      cy.get('.card-body h6 span').should('have.text', '152.00 €');
+  
+      // Check if the rating system is visible
+      cy.get('.dv-star-rating').should('be.visible');
+  
+      // Optionally check if the "SHOW MORE" button is working
+      cy.get('#Aventus').should('be.visible').click();
+      cy.url().should('include', '/product/34');
+    });
+  
+    it('should allow selecting a star rating', () => {
+      // Check if the 5-star rating is selected by default
+      cy.get('#star_5').should('be.checked');
+  
+      // Check if selecting a lower rating works
+      cy.get('#star_4').click().should('be.checked');
+      cy.get('#star_5').should('not.be.checked');
     });
   });
   
