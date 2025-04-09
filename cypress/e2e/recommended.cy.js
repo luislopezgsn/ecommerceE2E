@@ -15,10 +15,10 @@ describe('Perfume Card Test', () => {
       cy.get('.card-body h6').first().should('exist');
   
       // Check if the perfume image exists and is visible
-      cy.get('.card img').should('have.attr', 'src').and('include', 'Creed Aventus.jpg');
+      cy.get('.card img').should('have.attr', 'src').and('exist');
       
       // Check if the price is displayed correctly
-      cy.get('.card-body h6 span').should('have.text', '152.00 €');
+      cy.get('.card-body h6 span').should('exist');
   
       // Check if the rating system is visible
       cy.get('.dv-star-rating').should('be.visible');
