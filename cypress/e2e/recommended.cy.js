@@ -1,7 +1,7 @@
 describe('Perfume Card Test', () => {
     beforeEach(() => {
         // Visit the page that contains the perfume card
-        cy.visit('http://localhost:3000'); // Update the URL as needed
+        cy.visit('http://localhost:3000'); 
     });
 
     it('should display the perfume card correctly', () => {
@@ -22,8 +22,6 @@ describe('Perfume Card Test', () => {
 
         // Check if the rating system is visible
         cy.get('.dv-star-rating').should('be.visible');
-
-        // No need to check for the "SHOW MORE" button as per the update
     });
 
     it('should display the star rating elements', () => {
