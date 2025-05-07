@@ -1,7 +1,8 @@
+// cypress/e2e/homepage.cy.js
+import HomePage from '../support/pages/homePage';
+
 describe('Homepage Tests', () => {
-    it('should load the homepage successfully', () => {
-      cy.visit('http://localhost:3000/'); 
-      
-    });
+  it('should load the homepage successfully', () => {
+    HomePage.visit();
   });
-  
+});
