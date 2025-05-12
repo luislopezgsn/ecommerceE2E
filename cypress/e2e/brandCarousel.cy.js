@@ -16,7 +16,7 @@ describe('Brand Carousel Functionality', () => {
 
       cy.wrap($indicators).each((_indicator, index) => {
         BrandCarouselPage.clickIndicator(index);
-        cy.wait(500); // Animation delay
+        BrandCarouselPage.waitForAnimation();
         BrandCarouselPage.validateActiveSlideHasImage();
       });
 
