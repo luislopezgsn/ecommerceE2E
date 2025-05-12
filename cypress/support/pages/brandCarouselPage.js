@@ -1,30 +1,10 @@
 // cypress/support/pages/brandCarouselPage.js
+import CarouselBase from './carouselBase';
 
-class BrandCarouselPage {
-    getCarouselContainer() {
-      return cy.get('.container.text-center');
-    }
-  
-    getActiveSlide() {
-      return this.getCarouselContainer().find('.carousel-inner .active');
-    }
-  
-    getIndicators() {
-      return this.getCarouselContainer().find('.carousel-indicators li');
-    }
-  
-    clickIndicator(index) {
-      this.getIndicators().eq(index).click();
-    }
-  
-    validateActiveSlideHasImage() {
-      this.getActiveSlide()
-        .should('be.visible')
-        .within(() => {
-          cy.get('img').should('have.attr', 'alt').and('not.be.empty');
-        });
-    }
+class BrandCarouselPage extends CarouselBase {
+  constructor() {
+    super('.container.text-center'); // Scoped to brand carousel section
   }
-  
-  export default new BrandCarouselPage();
-  
+}
+
+export default new BrandCarouselPage();
