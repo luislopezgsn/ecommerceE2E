@@ -1,5 +1,12 @@
 {
   "devDependencies": {
-    "cypress": "^14.2.0"
+    "cypress": "^14.2.0",
+    "start-server-and-test": "^2.0.12"
+  },
+  "scripts": {
+    "cy:run": "cypress run --e2e",
+    "cy:open": "cypress open",
+    "test:e2e": "start-server-and-test docker-up http://localhost:3000 cy:run",
+    "docker-up": "docker-compose up -d && sleep 10"
   }
 }
