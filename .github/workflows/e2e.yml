@@ -1,4 +1,4 @@
-name: E2E Tests
+name: E2E Tests & SonarCloud Analysis
 
 on:
   push:
@@ -37,3 +37,16 @@ jobs:
 
       - name: Run Cypress tests
         run: npx cypress run --e2e
+
+      - name: Install SonarCloud Scanner
+        run: npm install -g sonar-scanner
+
+      - name: Run SonarCloud Analysis
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          sonar-scanner \
+            -Dsonar.projectKey=luislopezgsn_ecommerceE2E \
+            -Dsonar.organization=luislopezgsn \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.login=${SONAR_TOKEN}
