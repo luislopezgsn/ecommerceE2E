@@ -1,49 +1,48 @@
 // cypress/support/pages/perfumePage.js
 
-class PerfumePage {
+class PerfumesFiltersPage {
   visit() {
     cy.visit('http://localhost:3000/');
     cy.contains('PERFUMES').should('be.visible').click();
     cy.wait(3000);
   }
 
-  getBrandSelector() {
-    return cy.get('select.form-control');
-  }
-
   getBrandOptions() {
-    return this.getBrandSelector().find('option');
+    return cy.get('.checkbox .cr-icon'); // Targets all brand/gender icons
   }
 
-  selectBrandSearchFilter(value) {
-    cy.get('#searchBy').select(value);
+  selectBrandSearchFilter(filterName) {
+    cy.get('#searchBy').select(filterName);
   }
 
   getSearchInput() {
-    return cy.get('input[placeholder="Search..."]');
+    return cy.get('input.form-control[placeholder="Search..."]');
   }
+  
 
   clickSearchButton() {
-    return cy.get('button[type="submit"].btn-dark').click();
+    cy.contains('button', 'Search').click();
   }
+  
 
   filterByBrandCheckbox(brand) {
-    cy.get(`i#${brand}`).first().click({ force: true });
+    cy.get(`input[type="checkbox"]#${brand}`, { timeout: 10000 }).should('exist').click({ force: true });
   }
 
   filterByGender(genders = []) {
     genders.forEach((gender) => {
-      cy.get(`i#${gender}`).first().click({ force: true });
+      cy.get(`input[type="checkbox"]#${gender}`, { timeout: 10000 }).should('exist').click({ force: true });
     });
   }
 
   filterByPriceRange(value) {
-    cy.get(`input[type="radio"][value="${value}"]`).first().click({ force: true });
+    cy.get(`input[type="radio"][value="${value}"]`, { timeout: 10000 }).should('exist').click({ force: true });
   }
 
   getPerfumeCards() {
-    return cy.get('.card');
+    return cy.get('.col-lg-3 .card');
   }
+  
 
   assertCardsContainText(text) {
     this.getPerfumeCards().each(($el) => {
@@ -53,24 +52,19 @@ class PerfumePage {
 
   assertCardsContainAnyText(texts = []) {
     this.getPerfumeCards().each(($el) => {
-      cy.wrap($el).invoke('text').then((text) => {
-        const found = texts.some((t) => text.includes(t));
-        expect(found).to.be.true;
-      });
+      const content = $el.text().toLowerCase();
+      const found = texts.some((t) => content.includes(t.toLowerCase()));
+      expect(found).to.be.true;
     });
   }
 
   assertCardPricesWithin(min, max) {
     this.getPerfumeCards().each(($el) => {
-      cy.wrap($el).invoke('text').then((text) => {
-        const priceMatch = text.match(/(\d+[.,]?\d*) ?€/);
-        if (priceMatch) {
-          const price = parseFloat(priceMatch[1].replace(',', '.'));
-          expect(price).to.be.within(min, max);
-        }
-      });
+      const priceText = $el.find('[data-cy=price]').text().replace(/[^0-9.]/g, '');
+      const price = parseFloat(priceText);
+      expect(price).to.be.at.least(min).and.at.most(max);
     });
   }
 }
 
-export default new PerfumePage();
+export default new PerfumesFiltersPage();

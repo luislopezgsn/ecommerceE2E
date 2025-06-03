@@ -1,35 +1,35 @@
-// cypress/e2e/perfumesFilters.cy.js
+// cypress/e2e/perfumePage.spec.js
 
-import perfumesFiltersPage from '../support/pages/perfumesFiltersPage';
+import perfumePage from '../support/pages/perfumesFiltersPage';
 
 describe('Perfume Page Tests', () => {
   beforeEach(() => {
-    perfumesFiltersPage.visit();
+    perfumePage.visit();
   });
 
   it('should verify all brand options exist', () => {
-    perfumesFiltersPage.getBrandOptions().should('have.length.at.least', 2);
+    perfumePage.getBrandOptions().should('have.length.at.least', 2);
   });
 
   it('should search for perfumes by brand', () => {
-    perfumesFiltersPage.selectBrandSearchFilter('Brand');
-    perfumesFiltersPage.getSearchInput().type('Dior');
-    perfumesFiltersPage.clickSearchButton();
-    perfumesFiltersPage.assertCardsContainText('Dior');
+    perfumePage.selectBrandSearchFilter('perfumer');
+    perfumePage.getSearchInput().type('Dior');
+    perfumePage.clickSearchButton();
+    perfumePage.assertCardsContainText('Dior');
   });
 
   it('should filter perfumes by brand checkbox', () => {
-    perfumesFiltersPage.filterByBrandCheckbox('chanel');
-    perfumesFiltersPage.assertCardsContainText('Chanel');
+    perfumePage.filterByBrandCheckbox('Burberry');
+    perfumePage.assertCardsContainText('Burberry');
   });
 
   it('should filter perfumes by gender', () => {
-    perfumesFiltersPage.filterByGender(['men', 'women']);
-    perfumesFiltersPage.assertCardsContainAnyText(['Homme', 'Femme']);
+    perfumePage.filterByGender(['male', 'female']);
+    perfumePage.assertCardsContainAnyText(['Homme', 'Femme']);
   });
 
   it('should filter perfumes by price range', () => {
-    perfumesFiltersPage.filterByPriceRange('0-50');
-    perfumesFiltersPage.assertCardPricesWithin(0, 50);
+    perfumePage.filterByPriceRange('0-50');
+    perfumePage.assertCardPricesWithin(0, 50);
   });
 });
