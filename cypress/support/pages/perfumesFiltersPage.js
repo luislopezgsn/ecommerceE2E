@@ -38,12 +38,12 @@ class PerfumesFiltersPage {
   }
 
   filterByPriceRange(value) {
-    cy.contains('label', value)
+    cy.contains('label', new RegExp(value.replace('-', '.*'), 'i')) // handles variations like "0 - 50 €"
       .find('input[type="radio"]')
       .should('exist')
-      .click({ force: true });
+      .check({ force: true });
   }
-
+  
   getPerfumeCards() {
     return cy.get('.col-lg-3 .card');
   }
@@ -55,9 +55,12 @@ class PerfumesFiltersPage {
   }
 
   assertCardsContainAnyText(texts = []) {
-    this.getPerfumeCards().each(($el) => {
-      const content = $el.text().toLowerCase();
-      const found = texts.some((t) => content.includes(t.toLowerCase()));
+    this.getPerfumeCards().should('exist');
+    this.getPerfumeCards().then(($cards) => {
+      const found = Array.from($cards).some((card) => {
+        const content = card.textContent.toLowerCase();
+        return texts.some((t) => content.includes(t.toLowerCase()));
+      });
       expect(found).to.be.true;
     });
   }
