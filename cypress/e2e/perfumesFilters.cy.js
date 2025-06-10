@@ -2,6 +2,7 @@
 
 import perfumePage from '../support/pages/perfumesFiltersPage';
 
+
 describe('Perfume Page Tests', () => {
   beforeEach(() => {
     perfumePage.visit();

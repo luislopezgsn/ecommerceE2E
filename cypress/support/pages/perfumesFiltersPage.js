@@ -1,5 +1,3 @@
-// cypress/support/pages/perfumePage.js
-
 class PerfumesFiltersPage {
   visit() {
     cy.visit('http://localhost:3000/');
@@ -8,7 +6,7 @@ class PerfumesFiltersPage {
   }
 
   getBrandOptions() {
-    return cy.get('.checkbox .cr-icon'); // Targets all brand/gender icons
+    return cy.get('.checkbox .cr-icon');
   }
 
   selectBrandSearchFilter(filterName) {
@@ -18,31 +16,37 @@ class PerfumesFiltersPage {
   getSearchInput() {
     return cy.get('input.form-control[placeholder="Search..."]');
   }
-  
 
   clickSearchButton() {
     cy.contains('button', 'Search').click();
   }
-  
 
   filterByBrandCheckbox(brand) {
-    cy.get(`input[type="checkbox"]#${brand}`, { timeout: 10000 }).should('exist').click({ force: true });
+    cy.contains('label', brand)
+      .find('input[type="checkbox"]')
+      .should('exist')
+      .check({ force: true });
   }
 
   filterByGender(genders = []) {
     genders.forEach((gender) => {
-      cy.get(`input[type="checkbox"]#${gender}`, { timeout: 10000 }).should('exist').click({ force: true });
+      cy.contains('label', new RegExp(gender, 'i'))
+        .find('input[type="checkbox"]')
+        .should('exist')
+        .check({ force: true });
     });
   }
 
   filterByPriceRange(value) {
-    cy.get(`input[type="radio"][value="${value}"]`, { timeout: 10000 }).should('exist').click({ force: true });
+    cy.contains('label', value)
+      .find('input[type="radio"]')
+      .should('exist')
+      .click({ force: true });
   }
 
   getPerfumeCards() {
     return cy.get('.col-lg-3 .card');
   }
-  
 
   assertCardsContainText(text) {
     this.getPerfumeCards().each(($el) => {
@@ -60,9 +64,11 @@ class PerfumesFiltersPage {
 
   assertCardPricesWithin(min, max) {
     this.getPerfumeCards().each(($el) => {
-      const priceText = $el.find('[data-cy=price]').text().replace(/[^0-9.]/g, '');
-      const price = parseFloat(priceText);
-      expect(price).to.be.at.least(min).and.at.most(max);
+      const priceText = $el.text().match(/(\d+[.,]?\d*)\s?€/);
+      if (priceText) {
+        const price = parseFloat(priceText[1].replace(',', '.'));
+        expect(price).to.be.at.least(min).and.at.most(max);
+      }
     });
   }
 }
