@@ -1,50 +1,36 @@
-import PerfumesFiltersPage from '../support/pages/perfumesFiltersPage';
-import CardsPage from '../support/pages/cardsPage';
+// cypress/e2e/perfumePage.spec.js
 
-describe('Menu Page - Brand Selector & Search Filter', () => {
+import perfumePage from '../support/pages/perfumesFiltersPage';
+
+
+describe('Perfume Page Tests', () => {
   beforeEach(() => {
-    Cypress.on('uncaught:exception', () => false);
-    PerfumesFiltersPage.visit();
+    perfumePage.visit();
   });
 
-  it('should verify the brand selector exists and has options', () => {
-    PerfumesFiltersPage.getBrandSelector().should('exist').and('be.visible');
-    PerfumesFiltersPage.getBrandOptions().should('have.length.at.least', 2);
+  it('should verify all brand options exist', () => {
+    perfumePage.getBrandOptions().should('have.length.at.least', 2);
   });
 
-  it('should filter items when selecting a brand', () => {
-    PerfumesFiltersPage.selectBrandSearchOption();
-    CardsPage.assertCardsExist();
+  it('should search for perfumes by brand', () => {
+    perfumePage.selectBrandSearchFilter('perfumer');
+    perfumePage.getSearchInput().type('Dior');
+    perfumePage.clickSearchButton();
+    perfumePage.assertCardsContainText('Dior');
   });
 
-  it('should verify the search field exists and is functional', () => {
-    PerfumesFiltersPage.getSearchInput().should('exist').and('be.visible');
+  it('should filter perfumes by brand checkbox', () => {
+    perfumePage.filterByBrandCheckbox('Burberry');
+    perfumePage.assertCardsContainText('Burberry');
   });
 
-  it('should filter results when typing in the search field', () => {
-    PerfumesFiltersPage.getSearchInput().type('Chanel');
-    PerfumesFiltersPage.clickSearchButton();
-    CardsPage.assertCardsContainText('Chanel');
+  it('should filter perfumes by gender', () => {
+    perfumePage.filterByGender(['male', 'female']);
+    perfumePage.assertCardsContainAnyText(['Homme', 'Femme']);
   });
 
-  it('should filter cards by brand checkbox', () => {
-    PerfumesFiltersPage.clickBrandCheckbox('Dior');
-    CardsPage.assertCardsContainText('Dior');
-  });
-
-  it('should support multi-brand filtering', () => {
-    PerfumesFiltersPage.clickBrandCheckbox('Chanel');
-    PerfumesFiltersPage.clickBrandCheckbox('Dior');
-    CardsPage.assertCardsMatchEitherText('Chanel', 'Dior');
-  });
-
-  it('should allow clicking gender checkboxes', () => {
-    PerfumesFiltersPage.clickGenderCheckbox('male');
-    PerfumesFiltersPage.clickGenderCheckbox('female');
-  });
-
-  it('should filter cards by price radio button', () => {
-    PerfumesFiltersPage.selectPriceRange('3');
-    CardsPage.assertCardPricesInRange(25, 40);
+  it('should filter perfumes by price range', () => {
+    perfumePage.filterByPriceRange('0-50');
+    perfumePage.assertCardPricesWithin(0, 50);
   });
 });

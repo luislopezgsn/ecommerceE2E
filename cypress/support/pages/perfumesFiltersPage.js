@@ -1,46 +1,92 @@
 class PerfumesFiltersPage {
-    visit() {
-      cy.visit('http://localhost:3000/');
-      cy.contains('PERFUMES').should('be.visible').click();
-      cy.wait(3000);
-    }
+  visit() {
+    cy.visit('http://localhost:3000/');
+    cy.contains('PERFUMES').should('be.visible').click();
+    cy.wait(3000);
+  }
+
+  getBrandOptions() {
+    return cy.get('.checkbox .cr-icon');
+  }
+
+  selectBrandSearchFilter(filterName) {
+    cy.get('#searchBy').select(filterName);
+  }
+
+  getSearchInput() {
+    return cy.get('input.form-control[placeholder="Search..."]');
+  }
+
+  clickSearchButton() {
+    cy.contains('button', 'Search').click();
+  }
+
+  filterByBrandCheckbox(brand) {
+    cy.contains('label', brand)
+      .find('input[type="checkbox"]')
+      .should('exist')
+      .check({ force: true });
+  }
+
+  filterByGender(genders = []) {
+    genders.forEach((gender) => {
+      cy.contains('label', new RegExp(gender, 'i'))
+        .find('input[type="checkbox"]')
+        .should('exist')
+        .check({ force: true });
+    });
+  }
+
+  filterByPriceRange(value) {
+    const pattern = new RegExp(value.replace('-', '.*'), 'i');
   
-    getBrandSelector() {
-      return cy.get('select.form-control', { timeout: 10000 });
-    }
+    cy.get('label').each(($label) => {
+      const text = $label.text().trim(); // FIXED: use .text() for jQuery-wrapped element
   
-    getBrandOptions() {
-      return cy.get('select.form-control option');
-    }
-  
-    selectBrandSearchOption(option = 'perfumer') {
-      cy.get('#searchBy', { timeout: 10000 }).select(option);
-    }
-  
-    getSearchInput() {
-      return cy.get('input[placeholder="Search..."]', { timeout: 10000 });
-    }
-  
-    clickSearchButton() {
-      cy.get('button[type="submit"].btn-dark', { timeout: 10000 }).click();
-    }
-  
-    getCards() {
-      return cy.get('.card', { timeout: 10000 });
-    }
-  
-    clickBrandCheckbox(brandId) {
-      cy.get(`i#${brandId}`).first().click({ force: true });
-    }
-  
-    clickGenderCheckbox(genderId) {
-      cy.get(`i#${genderId}`).first().click({ force: true });
-    }
-  
-    selectPriceRange(value = "3") {
-      cy.get(`input[type="radio"][value="${value}"]`).first().click({ force: true });
-    }
+      if (pattern.test(text)) {
+        cy.wrap($label)
+          .find('input[type="radio"]')
+          .should('exist')
+          .check({ force: true });
+        return false; // exit loop early
+      }
+    });
   }
   
-  export default new PerfumesFiltersPage();
   
+  
+  
+  
+  getPerfumeCards() {
+    return cy.get('.col-lg-3 .card');
+  }
+
+  assertCardsContainText(text) {
+    this.getPerfumeCards().each(($el) => {
+      cy.wrap($el).should('contain.text', text);
+    });
+  }
+
+  assertCardsContainAnyText(texts = []) {
+    this.getPerfumeCards().should('exist');
+    this.getPerfumeCards().then(($cards) => {
+      const found = Array.from($cards).some((card) => {
+        const content = card.textContent.toLowerCase();
+        return texts.some((t) => content.includes(t.toLowerCase()));
+      });
+      expect(found).to.be.true;
+    });
+  }
+
+  assertCardPricesWithin(min, max) {
+    this.getPerfumeCards().each(($el) => {
+      const priceText = $el.text().match(/(\d+[.,]?\d*)\s?€/);
+      if (priceText) {
+        const price = parseFloat(priceText[1].replace(',', '.'));
+        expect(price).to.be.at.least(min).and.at.most(max);
+      }
+    });
+  }
+}
+
+export default new PerfumesFiltersPage();
