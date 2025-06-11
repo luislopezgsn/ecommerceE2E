@@ -38,11 +38,24 @@ class PerfumesFiltersPage {
   }
 
   filterByPriceRange(value) {
-    cy.contains('label', new RegExp(value.replace('-', '.*'), 'i')) // handles variations like "0 - 50 €"
-      .find('input[type="radio"]')
-      .should('exist')
-      .check({ force: true });
+    const pattern = new RegExp(value.replace('-', '.*'), 'i');
+  
+    cy.get('label').each(($label) => {
+      const text = $label.text().trim(); // FIXED: use .text() for jQuery-wrapped element
+  
+      if (pattern.test(text)) {
+        cy.wrap($label)
+          .find('input[type="radio"]')
+          .should('exist')
+          .check({ force: true });
+        return false; // exit loop early
+      }
+    });
   }
+  
+  
+  
+  
   
   getPerfumeCards() {
     return cy.get('.col-lg-3 .card');
